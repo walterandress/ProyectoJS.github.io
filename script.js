@@ -1,5 +1,27 @@
-// Pedir al usuario que ingrese su nombre
+// Clase pelicula y sus propiedades
 
+class Pelicula {
+  titulo;
+  genero;
+  duracion;
+  lanzamiento;
+}
+
+// Array con objetos de peliculas con sus propiedades
+const peliculas = [
+  { titulo: 'Barbi', genero: 'Comedia', duracion: '1h 45m', lanzamiento: 2023 },
+  { titulo: 'Risas en el Parque', genero: 'Comedia', duracion: '2h', lanzamiento: 2023 },
+  { titulo: 'Rapidos y Furiosos', genero: 'Accion', duracion: '2h 30m', lanzamiento: 2023 },
+  { titulo: 'Mision Imposible', genero: 'Accion', duracion: '2h 15m', lanzamiento: 2023 },
+  { titulo: 'Oppenheimer', genero: 'Drama', duracion: '1h 50m', lanzamiento: 2023 },
+  { titulo: 'Secretos Oscuros', genero: 'Drama', duracion: '1h 58m', lanzamiento: 2023 },
+  { titulo: 'Transformers', genero: 'Ciencia ficcion', duracion: '2h 10m', lanzamiento: 2023 },
+  { titulo: 'Viaje a las Estrellas', genero: 'Ciencia ficcion', duracion: '2h 30m', lanzamiento: 2023 },
+  { titulo: 'Pesadillas en la Noche', genero: 'Terror', duracion: '1h 40m', lanzamiento: 2023 },
+  { titulo: 'La Casa del Horror', genero: 'Terror', duracion: '2h', lanzamiento: 2023 },
+];
+
+// Pedir al usuario que ingrese su nombre
 function saludar() {
   let nombre = prompt('Bienvenido a ProCine! Por favor ingrese su nombre');
   if (nombre === null || nombre === '') {
@@ -9,39 +31,40 @@ function saludar() {
   }
 }
 
-saludar();
+// Funcion que filtra las peliculas por su genero y permite seleccionar una
+function filtrarYSeleccionarPelicula() {
+  let generoSeleccionado = prompt('Ingrese su genero preferido:');
 
-// Seleccion de peliculas en cartelera
+  if (generoSeleccionado) {
+    const peliculasFiltradas = peliculas.filter(pelicula => pelicula.genero.toLowerCase() === generoSeleccionado.toLowerCase());
 
-function seleccionCartelera() {
-  let peliculas = [' La Barby\n', ' Rapidos y Furiosos 18\n', ' Mision Super Imposible\n', ' El Openjaimer\n', ' Los Transformes Tesla\n'];
-  let mensajePeliculas = 'Peliculas en cartelera:\n';
-
-  for (let numPelicula = 0; numPelicula < peliculas.length; numPelicula++) {
-    mensajePeliculas += (numPelicula + 1) + peliculas[numPelicula];
-  }
-
-  mensajePeliculas += 'Por favor, ingrese el número de la película que le gustaría ver';
-
-  let eleccionPelicula = prompt(mensajePeliculas);
-
-  if (eleccionPelicula === null) {
-    alert('Gracias por visitarnos, Esperamos vuelvas pronto');
-  } else {
-    eleccionPelicula = parseInt(eleccionPelicula);
-
-    if (!isNaN(eleccionPelicula) && eleccionPelicula >= 1 && eleccionPelicula <= peliculas.length) {
-      alert(peliculas[eleccionPelicula - 1] + 'Gran eleccion! ');
+    if (peliculasFiltradas.length === 0) {
+      alert('No se encontraron peliculas en ese genero');
     } else {
-      alert('Opción inválida, por favor ingrese un número válido');
+      let mensajePeliculas = 'Por favor seleccione una de nuestras peliculas en cartelera:\n ';
+      
+      peliculasFiltradas.forEach((pelicula, index) => {
+        mensajePeliculas += (index + 1) + '. ' + pelicula.titulo + '\n';
+      });
+
+      let eleccionPelicula = prompt(mensajePeliculas + 'Por favor ingrese el numero de la pelicula que le gustaria ver');
+
+      if (eleccionPelicula === null) {
+        alert('Gracias por su visita, esperamos que vuelva pronto');
+      } else {
+        eleccionPelicula = parseInt(eleccionPelicula);
+
+        if (!isNaN(eleccionPelicula) && eleccionPelicula >= 1 && eleccionPelicula <= peliculasFiltradas.length) {
+          alert(peliculasFiltradas[eleccionPelicula - 1].titulo + ' Gran eleccion!');
+        }
+      }
     }
+  } else {
+    alert('No ingreso ningun genero');
   }
 }
 
-seleccionCartelera();
-
 // Compras de las entradas
-
 function ventaDeEntradas() {
   let precioBase = 250;
   let diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
@@ -78,4 +101,7 @@ function ventaDeEntradas() {
   alert ('El precio final de la entrada para el dia ' + diasSemana[diaSeleccionado - 1] + ' es: $' + precioFinal);
 }
 
+// Llamadas de funciones 
+saludar();
+filtrarYSeleccionarPelicula();
 ventaDeEntradas();
