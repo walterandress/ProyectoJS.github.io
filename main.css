@@ -1,0 +1,96 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background-color: #344a72;
+  color: #fff;
+  line-height: 1.8;
+  margin: 30px auto;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.bordeFormulario {
+  background: #fff;
+  padding: 15px 25px;
+  color: #333;
+}
+
+.bordeFormulario h1,
+.bordeFormulario p,
+.bordeFormulario h2 {
+  text-align: center;
+}
+
+.bordeFormulario .colorTitulo {
+  color: brown;
+}
+
+.bordeFormulario #genero {
+  margin-top: 15px;
+}
+
+.bordeFormulario #pelicula {
+  margin-top: 15px;
+}
+
+.bordeFormulario #dia {
+  margin-top: 15px;
+}
+
+.bordeFormulario #entrada {
+  margin-top: 15px;
+}
+
+.bordeFormulario #snacks {
+  margin-top: 15px;
+}
+
+.bordeFormulario label {
+  display: block;
+  color: #666;
+}
+
+.bordeFormulario input {
+  width: 100%;
+  padding: 20px;
+  border: #ddd 1px solid;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.bordeFormulario button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #49c1a2;
+  color: #fff;
+  cursor: pointer;
+}
+
+.bordeFormulario button:hover {
+  background-color: #37a08e;
+}
+
+.form-wrap .bottom-text {
+/* 
+Bottom text is smaller
+*/
+}
+
+footer {
+/* 
+Should be centered
+*/
+}
+
+footer a {
+/* 
+Footer link color is #49c1a2
+*/
+}

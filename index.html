@@ -1,14 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ProCine</title>
-  </head>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head>
 
-  <body>
-    <h1>ProCine</h1>
-    <p>¡Bienvenidos al emocionante mundo del cine! Descubre la magia de la gran pantalla y sumérgete en una experiencia cinematográfica única en ProCine.</p> 
-    <script src="script.js"></script>
-  </body>
+<body>
+  <div class="bordeFormulario">
+    <h1><span class="colorTitulo">Pro</span>Cine</h1>
+    <h2>Seleccion de Peliculas</h2>
+    <form id="formularioPliculas">
+      <div>
+        <label for="genero">Filtrar por genero:</label>
+        <select id="genero" name="genero">
+            <option value="todos">Todos</option>
+            <option value="Comedia">Comedia</option>
+            <option value="Accion">Accion</option>
+            <option value="Drama">Drama</option>
+            <option value="Ciencia ficcion">Ciencia Ficcion</option>
+            <option value="Terror">Terror</option>
+        </select>
+      </div>
+      <div>
+          <label for="pelicula">Seleccione una pelicula:</label>
+          <select id="pelicula" name="pelicula">
+              <option value="pelicula1">Barbi</option>
+              <option value="pelicula2">Risas en el Parque</option>
+              <option value="pelicula3">Rapidos y Furiosos</option>
+              <option value="pelicula4">Mision Imposible</option>
+              <option value="pelicula5">Oppenheimer</option>
+              <option value="pelicula6">Secretos Oscuros</option>
+              <option value="pelicula7">Transformers</option>
+              <option value="pelicula8">Viaje a las Estrellas</option>
+              <option value="pelicula9">Pesadillas en la Noche </option>
+              <option value="pelicula10">La Casa del Horror</option>
+          </select>
+      </div>
+      <div>
+        <label for="dia">Seleccione un dia de la semana:</label>
+        <select id="dia" name="dia">
+          <option value="lunes">Lunes (20% de descuento)</option>
+          <option value="martes">Martes (20% de descuento)</option>
+          <option value="miercoles">Miercoles</option>
+          <option value="jueves">Jueves</option>
+          <option value="viernes">Viernes</option>
+          <option value="sabado">Sabado</option>
+          <option value="domingo">Domingo</option>
+        </select>
+      </div>
+      
+      <div>
+        <label for="entrada">Seleccione el tipo de entrada:</label>
+        <select id="entrada" name="entrada">
+          <option value="general">General (380 pesos)</option>
+          <option value="vip">VIP (410 pesos)</option>
+          <option value="estudiante">Estudiante (330 pesos)</option>
+        </select>
+      </div>
+      <div>
+        <label for="snacks">Seleccione un combo de snacks:</label>
+        <select id="snacks" name="snacks">
+          <option value="ninguno">No comprar snacks</option>
+          <option value="grande">Pop Grande + Refresco Grande (345 pesos)</option>
+          <option value="mediano">Pop Mediano + Refresco Mediano (330 pesos)</option>
+          <option value="chico">Pop Chico + Refresco Chico (300 pesos)</option>
+        </select>
+      </div>
+      <div id="carrito">
+        <h2>Su Compra</h2>
+        <ul id="lista-carrito"></ul>
+        <p>Total a pagar: <span id="totalCarrito">0 pesos</span></p>
+      </div>
+      <button type="submit">Pagar</button>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
 </html>

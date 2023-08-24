@@ -1,6 +1,5 @@
-// Clase pelicula y sus propiedades
-
-class Pelicula {
+ // Clase pelicula y sus propiedades
+ class Pelicula {
   titulo;
   genero;
   duracion;
@@ -11,17 +10,17 @@ class Pelicula {
 const peliculas = [
   { titulo: 'Barbi', genero: 'Comedia', duracion: '1h 45m', lanzamiento: 2023 },
   { titulo: 'Risas en el Parque', genero: 'Comedia', duracion: '2h', lanzamiento: 2023 },
-  { titulo: 'Rapidos y Furiosos', genero: 'Accion', duracion: '2h 30m', lanzamiento: 2023 },
-  { titulo: 'Mision Imposible', genero: 'Accion', duracion: '2h 15m', lanzamiento: 2023 },
+  { titulo: 'Rapidos y Furiosos', genero: 'Acción', duracion: '2h 30m', lanzamiento: 2023 },
+  { titulo: 'Mision Imposible', genero: 'Acción', duracion: '2h 15m', lanzamiento: 2023 },
   { titulo: 'Oppenheimer', genero: 'Drama', duracion: '1h 50m', lanzamiento: 2023 },
   { titulo: 'Secretos Oscuros', genero: 'Drama', duracion: '1h 58m', lanzamiento: 2023 },
-  { titulo: 'Transformers', genero: 'Ciencia ficcion', duracion: '2h 10m', lanzamiento: 2023 },
-  { titulo: 'Viaje a las Estrellas', genero: 'Ciencia ficcion', duracion: '2h 30m', lanzamiento: 2023 },
+  { titulo: 'Transformers', genero: 'Ciencia ficción', duracion: '2h 10m', lanzamiento: 2023 },
+  { titulo: 'Viaje a las Estrellas', genero: 'Ciencia ficción', duracion: '2h 30m', lanzamiento: 2023 },
   { titulo: 'Pesadillas en la Noche', genero: 'Terror', duracion: '1h 40m', lanzamiento: 2023 },
   { titulo: 'La Casa del Horror', genero: 'Terror', duracion: '2h', lanzamiento: 2023 },
 ];
 
-// Pedir al usuario que ingrese su nombre
+// Funcion para saludar al usuario
 function saludar() {
   let nombre = prompt('Bienvenido a ProCine! Por favor ingrese su nombre');
   if (nombre === null || nombre === '') {
@@ -31,77 +30,135 @@ function saludar() {
   }
 }
 
-// Funcion que filtra las peliculas por su genero y permite seleccionar una
-function filtrarYSeleccionarPelicula() {
-  let generoSeleccionado = prompt('Ingrese su genero preferido:');
+// Filtrar peliculas por genero
+document.addEventListener('DOMContentLoaded', function () {
+  const seleccionarGenero = document.getElementById('genero');
+  const seleccionarPelicula = document.getElementById('pelicula');
 
-  if (generoSeleccionado) {
-    const peliculasFiltradas = peliculas.filter(pelicula => pelicula.genero.toLowerCase() === generoSeleccionado.toLowerCase());
+  seleccionarGenero.addEventListener('change', () => {
+    const generoSeleccionado = seleccionarGenero.value;
 
-    if (peliculasFiltradas.length === 0) {
-      alert('No se encontraron peliculas en ese genero');
-    } else {
-      let mensajePeliculas = 'Por favor seleccione una de nuestras peliculas en cartelera:\n ';
-      
-      peliculasFiltradas.forEach((pelicula, index) => {
-        mensajePeliculas += (index + 1) + '. ' + pelicula.titulo + '\n';
-      });
+    seleccionarPelicula.innerHTML = '';
 
-      let eleccionPelicula = prompt(mensajePeliculas + 'Por favor ingrese el numero de la pelicula que le gustaria ver');
-
-      if (eleccionPelicula === null) {
-        alert('Gracias por su visita, esperamos que vuelva pronto');
-      } else {
-        eleccionPelicula = parseInt(eleccionPelicula);
-
-        if (!isNaN(eleccionPelicula) && eleccionPelicula >= 1 && eleccionPelicula <= peliculasFiltradas.length) {
-          alert(peliculasFiltradas[eleccionPelicula - 1].titulo + ' Gran eleccion!');
-        }
+    peliculas.forEach(pelicula => {
+      if (generoSeleccionado === 'todos' || pelicula.genero === generoSeleccionado) {
+        const option = document.createElement('option');
+        option.value = pelicula.titulo;
+        option.textContent = pelicula.titulo;
+        seleccionarPelicula.appendChild(option);
       }
-    }
-  } else {
-    alert('No ingreso ningun genero');
+    });
+  });
+
+  seleccionarGenero.dispatchEvent(new Event('change'));
+});
+
+// Compra de entradas
+
+// Dias de la semana
+const diasSemana = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"];
+
+// Precios de las entradas
+const preciosEntradas = {
+  general: 380,
+  vip: 410,
+  estudiante: 330
+};
+
+// Precios de los snacks
+const preciosSnacks = {
+  grande: 345,
+  mediano: 330,
+  chico: 300
+};
+
+function calcularPrecioTotal() {
+  const seleccionarDia = document.getElementById('dia');
+  const seleccionarEntrada = document.getElementById('entrada');
+  const seleccionarSnacks = document.getElementById('snacks');
+  const precioTotal = document.getElementById('totalCarrito');
+
+  const diaSeleccionado = seleccionarDia.value;
+  const tipoDeEntradaSeleccionada = seleccionarEntrada.value;
+  const snacksSeleccionados = seleccionarSnacks.value;
+
+  // Obtener el precio base segun el tipo de entrada seleccionado
+  const precioBase = preciosEntradas[tipoDeEntradaSeleccionada];
+
+  // Aplicar descuento del 20%
+  let precioFinal = precioBase;
+  if (diaSeleccionado === 'lunes' || diaSeleccionado === 'martes') {
+    precioFinal *= 0.8;
   }
-}
 
-// Compras de las entradas
-function ventaDeEntradas() {
-  let precioBase = 250;
-  let diasSemana = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-
-  let diaSeleccionado = prompt('Bienvenido a la venta de entradas, seleccione un dia de la semana : \n' + '1-Lunes\n' + '2-Martes\n' + '3-Miercoles\n' + '4-Jueves\n' + '5-Viernes\n' + '6-Sabado\n' + '7-Domingo\n');
-
-  diaSeleccionado = parseInt(diaSeleccionado);
-
-  if (diaSeleccionado === 1 || diaSeleccionado === 2) {
-    precioBase *= 0.8;
+  // Obtener el precio del snack seleccionado
+  let precioSnack = 0;
+  if (snacksSeleccionados !== 'ninguno') {
+    precioSnack = preciosSnacks[snacksSeleccionados];
   }
 
-  let tipoDeEntrada = prompt ('Seleccione el tipo de entrada:\n' + '1-General\n' + '2-VIP\n' + '3-Estudiante\n');
-  
-  tipoDeEntrada = parseInt(tipoDeEntrada);
+  precioFinal += precioSnack;
 
-  let precioFinal;
-  switch (tipoDeEntrada) {
-    case 1:
-      precioFinal = precioBase;
-      break;
+  precioTotal.textContent = `${precioFinal} pesos`;
 
-    case 2:
-      precioFinal = precioBase * 1.5;
-      break;
+  // Guardar datos de la compra en localStorage
+  const datosCompra = {
+    pelicula: seleccionarPelicula.value,
+    dia: seleccionarDia.value,
+    entrada: tipoDeEntradaSeleccionada,
+    snacks: snacksSeleccionados,
+    precioTotal: precioFinal,
+  };
 
-    case 3:
-      precioFinal = precioBase * 0.7;
-      break;
-    default:
-      alert('Opcion no valida. Seleccione un tipo de entrada valida')
-      return;
+  localStorage.setItem('datosCompra', JSON.stringify(datosCompra));
+};
+
+// Cargar datos almacenados en localStorage
+function cargarDatosDesdeLocalStorage() {
+  const datosGuardados = localStorage.getItem('datosCompra');
+  if (datosGuardados) {
+    const datosCompra = JSON.parse(datosGuardados);
+
+    // Actualizar elementos en la página con datos cargados
+    seleccionarPelicula.value = datosCompra.pelicula;
+    seleccionarDia.value = datosCompra.dia;
+    seleccionarEntrada.value = datosCompra.entrada;
+    seleccionarSnacks.value = datosCompra.snacks;
+    calcularPrecioTotal();
   }
-  alert ('El precio final de la entrada para el dia ' + diasSemana[diaSeleccionado - 1] + ' es: $' + precioFinal);
-}
+};
 
-// Llamadas de funciones 
+// Asociar eventos
+const seleccionarDia = document.getElementById('dia');
+const seleccionarEntrada = document.getElementById('entrada');
+const seleccionarSnacks = document.getElementById('snacks');
+
+seleccionarDia.addEventListener('change', calcularPrecioTotal);
+seleccionarEntrada.addEventListener('change', calcularPrecioTotal);
+seleccionarSnacks.addEventListener('change', calcularPrecioTotal);
+
+document.addEventListener('DOMContentLoaded', function () {
+  const seleccionarGenero = document.getElementById('genero');
+  const seleccionarPelicula = document.getElementById('pelicula');
+
+  seleccionarGenero.addEventListener('change', () => {
+    const generoSeleccionado = seleccionarGenero.value;
+
+    seleccionarPelicula.innerHTML = '';
+
+    peliculas.forEach(pelicula => {
+      if (generoSeleccionado === 'todos' || pelicula.genero === generoSeleccionado) {
+        const option = document.createElement('option');
+        option.value = pelicula.titulo;
+        option.textContent = pelicula.titulo;
+        seleccionarPelicula.appendChild(option);
+      }
+    });
+  });
+
+  seleccionarGenero.dispatchEvent(new Event('change'));
+
+  cargarDatosDesdeLocalStorage();
+});
+
 saludar();
-filtrarYSeleccionarPelicula();
-ventaDeEntradas();
