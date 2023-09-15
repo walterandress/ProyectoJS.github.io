@@ -21,9 +21,13 @@ body {
 }
 
 .bordeFormulario h1,
-.bordeFormulario p,
+.bordeFormulario p {
+  text-align: center;
+}
+
 .bordeFormulario h2 {
   text-align: center;
+  font-size: 30px;
 }
 
 .bordeFormulario .colorTitulo {

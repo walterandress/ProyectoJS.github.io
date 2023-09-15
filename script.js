@@ -9,15 +9,15 @@
 // Array con objetos de peliculas con sus propiedades
 const peliculas = [
   { titulo: 'Barbi', genero: 'Comedia', duracion: '1h 45m', lanzamiento: 2023 },
-  { titulo: 'Risas en el Parque', genero: 'Comedia', duracion: '2h', lanzamiento: 2023 },
-  { titulo: 'Rapidos y Furiosos', genero: 'Acción', duracion: '2h 30m', lanzamiento: 2023 },
-  { titulo: 'Mision Imposible', genero: 'Acción', duracion: '2h 15m', lanzamiento: 2023 },
+  { titulo: 'Mario Bros', genero: 'Comedia', duracion: '2h', lanzamiento: 2023 },
+  { titulo: 'Rapidos y Furiosos', genero: 'Accion', duracion: '2h 30m', lanzamiento: 2023 },
+  { titulo: 'Mision Imposible', genero: 'Accion', duracion: '2h 15m', lanzamiento: 2023 },
   { titulo: 'Oppenheimer', genero: 'Drama', duracion: '1h 50m', lanzamiento: 2023 },
-  { titulo: 'Secretos Oscuros', genero: 'Drama', duracion: '1h 58m', lanzamiento: 2023 },
-  { titulo: 'Transformers', genero: 'Ciencia ficción', duracion: '2h 10m', lanzamiento: 2023 },
-  { titulo: 'Viaje a las Estrellas', genero: 'Ciencia ficción', duracion: '2h 30m', lanzamiento: 2023 },
-  { titulo: 'Pesadillas en la Noche', genero: 'Terror', duracion: '1h 40m', lanzamiento: 2023 },
-  { titulo: 'La Casa del Horror', genero: 'Terror', duracion: '2h', lanzamiento: 2023 },
+  { titulo: 'Detective Knight', genero: 'Drama', duracion: '1h 58m', lanzamiento: 2023 },
+  { titulo: 'Transformers', genero: 'Ciencia ficcion', duracion: '2h 10m', lanzamiento: 2023 },
+  { titulo: '65', genero: 'Ciencia ficcion', duracion: '2h 30m', lanzamiento: 2023 },
+  { titulo: 'El exorcista del Papa', genero: 'Terror', duracion: '1h 40m', lanzamiento: 2023 },
+  { titulo: 'M3gan', genero: 'Terror', duracion: '2h', lanzamiento: 2023 },
 ];
 
 // Funcion para saludar al usuario
@@ -119,7 +119,7 @@ function cargarDatosDesdeLocalStorage() {
   if (datosGuardados) {
     const datosCompra = JSON.parse(datosGuardados);
 
-    // Actualizar elementos en la página con datos cargados
+    // Actualizar elementos en la pagina con datos cargados
     seleccionarPelicula.value = datosCompra.pelicula;
     seleccionarDia.value = datosCompra.dia;
     seleccionarEntrada.value = datosCompra.entrada;
@@ -127,6 +127,26 @@ function cargarDatosDesdeLocalStorage() {
     calcularPrecioTotal();
   }
 };
+
+let listado = document.getElementById('listado');
+
+fetch('./data.json')
+  .then((response) => response.json())
+  .then((data) => {
+    data.forEach((producto) => {
+      const li = document.createElement('li');
+
+      li.innerHTML = `
+      <h2>${producto.id}</h2>
+      <p>${producto.nombre}</p>
+      <p>${producto.genero}</p>
+      <b>${producto.duracion}</b>
+      <h2>${producto.id}</h2>
+      `;
+
+      listado.append(li);
+    });
+  });
 
 // Asociar eventos
 const seleccionarDia = document.getElementById('dia');

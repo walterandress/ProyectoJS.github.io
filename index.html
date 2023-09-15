@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ProCine</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  
 </head>
 
 <body>
@@ -29,15 +31,15 @@
           <label for="pelicula">Seleccione una pelicula:</label>
           <select id="pelicula" name="pelicula">
               <option value="pelicula1">Barbi</option>
-              <option value="pelicula2">Risas en el Parque</option>
+              <option value="pelicula2">Mario Bros</option>
               <option value="pelicula3">Rapidos y Furiosos</option>
               <option value="pelicula4">Mision Imposible</option>
               <option value="pelicula5">Oppenheimer</option>
-              <option value="pelicula6">Secretos Oscuros</option>
+              <option value="pelicula6">Detective Knight</option>
               <option value="pelicula7">Transformers</option>
-              <option value="pelicula8">Viaje a las Estrellas</option>
-              <option value="pelicula9">Pesadillas en la Noche </option>
-              <option value="pelicula10">La Casa del Horror</option>
+              <option value="pelicula8">65</option>
+              <option value="pelicula9">El exorcista del Papa</option>
+              <option value="pelicula10">M3gan</option>
           </select>
       </div>
       <div>
@@ -56,28 +58,71 @@
       <div>
         <label for="entrada">Seleccione el tipo de entrada:</label>
         <select id="entrada" name="entrada">
-          <option value="general">General (380 pesos)</option>
-          <option value="vip">VIP (410 pesos)</option>
-          <option value="estudiante">Estudiante (330 pesos)</option>
+          <option value="general">General ($380)</option>
+          <option value="vip">VIP ($410)</option>
+          <option value="estudiante">Estudiante ($330)</option>
         </select>
       </div>
       <div>
         <label for="snacks">Seleccione un combo de snacks:</label>
         <select id="snacks" name="snacks">
           <option value="ninguno">No comprar snacks</option>
-          <option value="grande">Pop Grande + Refresco Grande (345 pesos)</option>
-          <option value="mediano">Pop Mediano + Refresco Mediano (330 pesos)</option>
-          <option value="chico">Pop Chico + Refresco Chico (300 pesos)</option>
+          <option value="grande">Pop Grande + Refresco Grande ($345)</option>
+          <option value="mediano">Pop Mediano + Refresco Mediano ($330)</option>
+          <option value="chico">Pop Chico + Refresco Chico ($300)</option>
         </select>
       </div>
       <div id="carrito">
         <h2>Su Compra</h2>
         <ul id="lista-carrito"></ul>
-        <p>Total a pagar: <span id="totalCarrito">0 pesos</span></p>
+        <p>Total a pagar: <span id="totalCarrito">$0</span></p>
       </div>
       <button type="submit">Pagar</button>
     </form>
   </div>
+  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="./Imagenes/Barbie.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="./Imagenes/MarioBros.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="./Imagenes/RapidosYFuriosos.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="./Imagenes/MisionImposible.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="./Imagenes/Oppenheimer.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="./Imagenes/DetectiveKnight.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="./Imagenes/Transformers.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="./Imagenes/65.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="./Imagenes/ElExorcistaDelPapa.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="./Imagenes/M3gan.jpg" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <script src="script.js"></script>
 </body>
 </html>

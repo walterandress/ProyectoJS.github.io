@@ -1,0 +1,12 @@
+[
+  {"id": 1, "nombre": "Barbie", "genero": "comedia", "duracion": "1h 45m"},
+  {"id": 2, "nombre": "Mario Bros", "genero": "comedia", "duracion": "2h"},
+  {"id": 3, "nombre": "Rapidos y Furiosos", "genero": "accion", "duracion": "2h 30m"},
+  {"id": 4, "nombre": "Mision Imposible", "genero": "accion", "duracion": "2h 15m"},
+  {"id": 5, "nombre": "Oppenheimer", "genero": "drama", "duracion": "1h 50m"},
+  {"id": 6, "nombre": "Detective Knight", "genero": "drama", "duracion": "1h 58m"},
+  {"id": 7, "nombre": "Transformers", "genero": "ciencia ficcion", "duracion": "2h 10m"},
+  {"id": 8, "nombre": "65", "genero": "ciencia ficcion", "duracion": "2h 30m"},
+  {"id": 9, "nombre": "El exorcista del Papa", "genero": "terror", "duracion": "1h 40m"},
+  {"id": 10, "nombre": "M3gan", "genero": "terror", "duracion": "2h"},
+]
